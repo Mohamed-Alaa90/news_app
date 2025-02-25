@@ -2,43 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/theme/theme_app.dart';
 import 'package:news_app/features/category/data/models/category_item_model.dart';
-import 'package:provider/provider.dart';
 
-import '../provider/gategory_item_provider.dart';
+class CategoryItemCard extends StatelessWidget {
+  const CategoryItemCard({
+    super.key,
+    required this.categoryItemModel,
+    required this.index,
+  });
 
-class CategoryItemCard extends StatelessWidget
-{
+  final CategoryItemModel categoryItemModel;
+  final int index;
 
-    CategoryItemCard({super.key, required this.categoryItemModel, required this.index});
-    final CategoryItemModel categoryItemModel;
-    int index;
-    @override
-    Widget build(BuildContext context)
-    {
-
-        return Container(
-            margin: EdgeInsets.all(6),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(index.isEven ? 25 : 0),
-                    bottomRight: Radius.circular(index.isOdd ? 25 : 0),
-                    topLeft: Radius.circular(25.r),
-                    topRight: Radius.circular(25.r)
-
-                ),
-                color: categoryItemModel.backGroundColor
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(6.w),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(index.isEven ? 25.r : 0.r),
+            bottomRight: Radius.circular(index.isOdd ? 25.r : 0.r),
+            topLeft: Radius.circular(25.r),
+            topRight: Radius.circular(25.r),
+          ),
+          color: categoryItemModel.backGroundColor,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.r),
+              child: Image.asset(
+                categoryItemModel.imagePath,
+                height: 100.h,
+                width: 100.h,
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:
-                [
-                    Image.asset(categoryItemModel.imagePath,height: 110.h ,width: 110.h),
-                    SizedBox(height: 6.h),
-                    Text(categoryItemModel.title,
-                        style: ThemeApp.myTheme.textTheme.titleMedium
-                    )
-                ]
-            )
-        );
-    }
+            SizedBox(height: 6.h),
+            FittedBox(
+              child: Text(
+                categoryItemModel.title,
+                style: ThemeApp.myTheme(context).textTheme.titleMedium,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

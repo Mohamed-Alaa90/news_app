@@ -12,6 +12,3 @@ class ColorsApp
     static const Color blueBColor = Color(0xff4882CF);
 }
 
-class UrlsApp
-{
-}

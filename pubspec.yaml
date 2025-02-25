@@ -38,6 +38,8 @@ dependencies:
   provider:
   google_fonts:
   loading_animation_widget: ^1.3.0
+  icons_launcher: ^3.0.0
+  http:
 
 dev_dependencies:
   flutter_test:
