@@ -19,7 +19,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
       ],
-      child: MyApp(),
+      child:  MyApp(),
     ),
   );
 }
@@ -36,12 +36,12 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeApp.myTheme(context),
-          initialRoute: SourcesScreen.route,
+          initialRoute: HomeScreen.route,
           routes: {
             SplashScreen.route: (context) => const SplashScreen(),
             HomeScreen.route: (context) => const HomeScreen(),
             SettingScreen.route: (context) => SettingScreen(),
-            SourcesScreen.route: (context) =>  SourcesScreen(),
+            SourcesScreen.route: (context) =>  const SourcesScreen(),
           },
         );
       },
