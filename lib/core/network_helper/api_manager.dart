@@ -37,7 +37,7 @@ class ApiManager {
     Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiNews, {
       'apiKey': _apiKey,
       'sources': categoryId,
-      'pageSize': '5',
+      'pageSize': '10',
       'page': page,
     });
 
