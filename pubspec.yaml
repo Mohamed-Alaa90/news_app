@@ -39,8 +39,11 @@ dependencies:
   google_fonts:
   loading_animation_widget: ^1.3.0
   icons_launcher: ^3.0.0
-  http:
+  http: ^1.3.0
   cached_network_image: ^3.4.1
+  flutter_native_splash:
+  intl:
+  url_launcher: ^6.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

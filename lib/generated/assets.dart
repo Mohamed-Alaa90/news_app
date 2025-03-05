@@ -2,14 +2,14 @@
 class Assets {
   Assets._();
 
+  static const String assetsBackGround = 'assets/backGround.png';
   static const String assetsBussines = 'assets/bussines.png';
   static const String assetsEnvironment = 'assets/environment.png';
   static const String assetsHealth = 'assets/health.png';
   static const String assetsLogo = 'assets/logo.png';
-  static const String assetsPattern = 'assets/backGround.png';
+  static const String assetsLogoSplas = 'assets/Logo_splas.png';
   static const String assetsPolitics = 'assets/Politics.png';
   static const String assetsScience = 'assets/science.png';
   static const String assetsSports = 'assets/sports.png';
-  static const String assetsBackGround = 'assets/backGround.png';
 
 }
