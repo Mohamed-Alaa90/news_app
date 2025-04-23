@@ -4,7 +4,11 @@ import 'package:news_app/core/theme/theme_app.dart';
 import 'package:news_app/model/category_model.dart';
 
 class CategoryItemCard extends StatelessWidget {
-  const CategoryItemCard({super.key, required this.categoryItemModel, required this.index});
+  const CategoryItemCard({
+    super.key,
+    required this.categoryItemModel,
+    required this.index,
+  });
 
   final CategoryItemModel categoryItemModel;
   final int index;
@@ -28,7 +32,12 @@ class CategoryItemCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(15.r),
-              child: Image.asset(categoryItemModel.imagePath, height: 100.h, width: 100.h, fit: BoxFit.cover),
+              child: Image.asset(
+                categoryItemModel.imagePath,
+                height: 100.h,
+                width: 100.h,
+                fit: BoxFit.cover,
+              ),
             ),
             SizedBox(height: 6.h),
             FittedBox(

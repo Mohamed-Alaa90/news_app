@@ -31,7 +31,8 @@ class _NewWidgetState extends State<NewWidget> {
     super.initState();
     futureNews = _fetchData();
     listController.addListener(() {
-      if (listController.position.pixels >= listController.position.maxScrollExtent - 100) {
+      if (listController.position.pixels >=
+          listController.position.maxScrollExtent - 100) {
         nextPage();
       }
     });
@@ -54,11 +55,15 @@ class _NewWidgetState extends State<NewWidget> {
     setState(() => isLoading = true);
 
     try {
-      var response = await ApiManager.getNewsById(widget.source.id ?? '', pageNumber.toString());
+      var response = await ApiManager.getNewsById(
+        widget.source.id ?? '',
+        pageNumber.toString(),
+      );
 
       if (response != null && response.articles != null) {
         setState(() {
-          if (response.articles!.isEmpty || newsList.length + response.articles!.length >= 100) {
+          if (response.articles!.isEmpty ||
+              newsList.length + response.articles!.length >= 100) {
             lastPage = true;
           }
           newsList.addAll(response.articles!);
@@ -82,40 +87,42 @@ class _NewWidgetState extends State<NewWidget> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/backGround.png")),
-      ),
-      child: Scaffold(
-        body: FutureBuilder<void>(
-          future: futureNews,
-          builder: (context, snapshot) {
-            if (newsList.isEmpty && snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: LoadingAnimationWidget.staggeredDotsWave(color: ColorsApp.primerColor, size: 100));
-            } else if (snapshot.hasError) {
-              return Center(child: AppHelper.fetchDataAgain(_fetchData));
-            } else if (newsList.isEmpty) {
-              return const Center(child: Text('لا توجد بيانات متاحة'));
-            } else {
-              return ListView.builder(
-                controller: listController,
-                itemCount: newsList.length + (isLoading ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index == newsList.length) {
-                    return Center(
-                      child: LoadingAnimationWidget.staggeredDotsWave(color: ColorsApp.primerColor, size: 50),
-                    );
-                  }
-                  return NewsItem(article: newsList[index]);
-                },
-              );
-            }
-          },
-        ),
-      ),
+    return FutureBuilder<void>(
+      future: futureNews,
+      builder: (context, snapshot) {
+        if (newsList.isEmpty &&
+            snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: LoadingAnimationWidget.staggeredDotsWave(
+              color: ColorsApp.primerColor,
+              size: 100,
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Center(child: AppHelper.fetchDataAgain(_fetchData));
+        } else if (newsList.isEmpty) {
+          return const Center(child: Text('لا توجد بيانات متاحة'));
+        } else {
+          return ListView.builder(
+            controller: listController,
+            itemCount: newsList.length + (isLoading ? 1 : 0),
+            itemBuilder: (context, index) {
+              if (index == newsList.length) {
+                return Center(
+                  child: LoadingAnimationWidget.staggeredDotsWave(
+                    color: ColorsApp.primerColor,
+                    size: 50,
+                  ),
+                );
+              }
+              return NewsItem(article: newsList[index]);
+            },
+          );
+        }
+      },
     );
   }
 }

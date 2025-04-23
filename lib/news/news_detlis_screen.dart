@@ -34,9 +34,9 @@ class NewsDetailsScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Hero(
-                        tag: article.urlToImage!, // Unique tag for Hero animation
+                        tag: article.urlToImage!, 
                         child: AspectRatio(
-                          aspectRatio: 16 / 9, // Maintain aspect ratio
+                          aspectRatio: 16 / 9, 
                           child: CachedNetworkImage(
                             imageUrl: article.urlToImage!,
                             fit: BoxFit.cover,

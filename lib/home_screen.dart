@@ -16,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  CategoryItemModel? selectedCategory;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,8 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  CategoryItemModel? selectedCategory;
 
   void onCategoryItemClick(CategoryItemModel newSelectedCategory) {
     selectedCategory = newSelectedCategory;

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/category/cubit/category_details_view_model.dart';
 import 'package:news_app/core/theme/theme_app.dart';
 import 'package:news_app/home_screen.dart';
 import 'package:news_app/news/news_detlis_screen.dart';
 
 void main() {
-  runApp(const NewsApp());
+  runApp(
+    BlocProvider(
+      create: (context) => CategoryDetailsViewModel(),
+      child: const NewsApp(),
+    ),
+  );
 }
 
 class NewsApp extends StatelessWidget {

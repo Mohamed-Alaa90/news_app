@@ -73,7 +73,7 @@ class SearchScreen extends SearchDelegate {
           } else if (!snapshot.hasData ||
               snapshot.data == null ||
               snapshot.data!.articles!.isEmpty) {
-            return const Center(child: Text('البحث'));
+            return const Center(child: Text(''));
           } else {
             var newsList = snapshot.data!.articles;
             return ListView.builder(

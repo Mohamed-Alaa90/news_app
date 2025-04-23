@@ -11,7 +11,10 @@ class ApiManager {
   static const String _apiKey = '623910c14da8411a942668f3b7ec4b48';
 
   static Future<SourceRespon?> getSources(String categoryId) async {
-    Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiSources, {'apiKey': _apiKey, 'category': categoryId});
+    Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiSources, {
+      'apiKey': _apiKey,
+      'category': categoryId,
+    });
 
     try {
       var response = await https.get(url);
@@ -63,7 +66,10 @@ class ApiManager {
 
   static Future<NewsModel?> getSearch(String query) async {
     if (query.isEmpty) return null;
-    Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiNews, {'apiKey': _apiKey, 'q': query});
+    Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiNews, {
+      'apiKey': _apiKey,
+      'q': query,
+    });
 
     try {
       var response = await https.get(url);
